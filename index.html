@@ -8114,6 +8114,15 @@ if(!IS_LOCAL_HOST){
   // ===== Google Sheets 订单同步配置 =====
   var GSHEET_URL = 'https://script.google.com/macros/s/AKfycbyjmOZcqSZZSm3rUdlsUraejAs5JwnwcEujSeRtWdEQt07-LXgTTh6_Nsk4jpRMzmgdOw/exec';
 
+  // 从Specifiche描述中提取最后出现的数字作为Quantità
+  function getSpecQty(spec){
+    if(!spec) return 1;
+    const parsed = parseInt(spec, 10);
+    if(!isNaN(parsed)) return parsed;
+    const numMatch = spec.match(/\d+/g);
+    return numMatch ? parseInt(numMatch[numMatch.length-1], 10) : 1;
+  }
+
   // 上传订单到 Google Sheets（每个商品单独一行，分列写入）
   // 用 GET + URL参数方式，彻底绕开 no-cors 的 Content-Type 限制
   function sendOrderToSheet(order){
