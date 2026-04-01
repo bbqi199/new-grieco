@@ -6731,7 +6731,7 @@ const App = (function(){
     setTimeout(()=>t.classList.remove('show'),1800);
   }
   function $(id){ return document.getElementById(id); }
-  function formatPrice(n){ return '¥'+n.toFixed(2); }
+  function formatPrice(n){ return '€'+n.toFixed(2); }
 
   // ==================== 搜索功能 ====================
   let _searchTimer = null;
@@ -7515,7 +7515,7 @@ function buyNow() {
         <div class="order-card-footer">
           <span class="order-total-text">Pagato: <strong>${formatPrice(o.total)}</strong></span>
           <div class="order-action-btns">
-            ${o.status==='pending'?`<button class="order-btn" onclick="App.cancelOrder('${o.no}')">Annulla Ordine</button>`:''}
+            
             ${o.status==='done'?`<button class="order-btn primary" onclick="App.reorder('${o.no}')">Ordina di Nuovo</button>`:''}
             ${o.status==='processing'?`<button class="order-btn primary" onclick="App.showToast('Funzione tracciamento in sviluppo…')">Traccia Spedizione</button>`:''}
             <button class="order-btn" style="color:var(--primary);border-color:var(--primary);" onclick="App.exportOrderExcel('${o.no}')">📥 Esporta Excel</button>
@@ -8212,7 +8212,7 @@ if(!IS_LOCAL_HOST){
       address:     addrText,
       items_text:  itemsHtml,
       item_count:  order.items.length,
-      total:       '¥' + order.total.toFixed(2),
+      total:       '€' + order.total.toFixed(2),
       remark:      order.remark || '—'
     };
 
