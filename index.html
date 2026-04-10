@@ -6870,7 +6870,8 @@ const App = (function(){
       + '<div style="display:flex;flex-direction:column;gap:0;">';
 
     showResults.forEach(function(g){
-      const imgUrl = g.imageUrl || '';  // 不再回退到本地图片
+      // 使用Cloudinary图片URL，与商品卡片保持一致
+      const imgUrl = getImgUrl(g);
       const emoji = g.emoji || '📦';
       html += '<div onclick="App.openDetail(\'' + g.id + '\')"'
         + ' style="display:flex;align-items:center;gap:10px;background:var(--white);padding:9px 14px;border-bottom:1px solid var(--border);cursor:pointer;">'
@@ -8270,3 +8271,4 @@ if(!IS_LOCAL_HOST){
 <!-- 更新时间: 2026-04-06 18:12:24 -->
 <!-- 更新时间: 2026-04-10 15:31:09 -->
 <!-- 更新时间: 2026-04-10 15:33:04 -->
+<!-- 更新时间: 2026-04-10 16:31:21 -->
